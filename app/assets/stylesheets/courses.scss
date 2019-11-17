@@ -35,16 +35,16 @@
   }
 
   .course-summary {
-    background: $green-light;
+    background: $black;
     padding: 6px;
 
     .course-title {
-      color: $brown-dark;
+      color: $blue-bright;
       font-weight: bold;
     }
 
     .course-info {
-      color: $brown-dark;
+      color: $blue-bright;
 
       span {
 
@@ -53,7 +53,7 @@
 
     .course-actions {
       a {
-        color: $black;
+        color: $white;
       }
     }
   }

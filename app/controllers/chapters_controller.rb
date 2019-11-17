@@ -15,10 +15,12 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   def new
     @chapter = Chapter.new
+    @course = Course.find(params[:id])
   end
 
   # GET /chapters/1/edit
   def edit
+    @course = @chapter.course
   end
 
   # POST /chapters

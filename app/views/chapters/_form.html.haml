@@ -1,22 +1,17 @@
 = form_for @chapter do |f|
+  = f.hidden_field :course_id, value: @course.id
+
   - if @chapter.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@chapter.errors.count, "error")} prohibited this chapter from being saved:"
-      %ul
-        - @chapter.errors.full_messages.each do |message|
-          %li= message
+      %h4 There was an issue when trying to save this chapter.
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :order
-    = f.text_field :order
-  .field
-    = f.label :course
-    = f.text_field :course
-  .actions
-    = f.submit 'Save'
+  .row
+    .form-group.col-sm-6
+      = f.label :title
+      = f.text_field :title, class: "form-control"
+    .form-group.col-sm-6
+      = f.label :description
+      = f.text_area :description, class: "form-control"
+  .row
+    .actions.col-sm-6
+    = f.submit 'Save', class: "btn btn-primary"

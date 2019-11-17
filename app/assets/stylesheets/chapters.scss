@@ -1,3 +1,60 @@
-// Place all the styles related to the Chapters controller here.
+// Place all the styles related to the chapters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chapter {
+  border-radius: 4px;
+  border: 1px $brown-dark solid;
+  overflow: hidden;
+  box-shadow: 3px 3px 2px 2px $brown-light;
+
+  .cancel {
+    display: inline-block;
+    position: absolute;
+    margin-bottom: -10px;
+    z-index: 9;
+    right: 15px;
+
+    a {
+      color: $brown-dark;
+      padding: 10px;
+      font-size: 14px;
+      display: inline-block;
+      &:hover {
+        corlor: $brown-light;
+      }
+    }
+  }
+
+  .chapter-thumbnail {
+    width: 100%;
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .chapter-summary {
+    background: $black;
+    padding: 6px;
+
+    .chapter-title {
+      color: $blue-bright;
+      font-weight: bold;
+    }
+
+    .chapter-info {
+      color: $blue-bright;
+
+      span {
+
+      }
+    }
+
+    .chapter-actions {
+      a {
+        color: $white;
+      }
+    }
+  }
+}

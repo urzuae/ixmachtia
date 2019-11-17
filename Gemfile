@@ -28,6 +28,7 @@ gem 'devise'
 gem "dotenv-rails"
 # jquery
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 # Haml instead of erb
 gem "haml-rails"
 

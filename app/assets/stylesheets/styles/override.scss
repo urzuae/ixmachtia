@@ -1,11 +1,12 @@
 .btn-primary {
-  background: $green-light;
-  border-color: $green-dark;
+  background: $blue-light;
+  border-color: $blue-dark;
   color: $white;
 
   &:active, &:hover {
-    background: $green-dark;
-    border-color: $green-dark;
+    background: $blue-bright;
+    border-color: $blue-light;
+    color: $black;
   }
 }
 
