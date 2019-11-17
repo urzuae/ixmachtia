@@ -1,0 +1,30 @@
+%h1 Dashboard
+
+%div
+  %p
+    - if @courses.length == 0
+      You have no courses yet!!
+      = link_to "Add your first Course!", new_course_path, class: "btn btn-primary"
+    - else
+      = link_to "Create New Course", new_course_path, class: "btn btn-primary"
+
+- unless @courses.length == 0
+  - @courses.each do |course|
+    .col-sm-3
+      .course
+        .cancel
+          = link_to 'X', course, method: :delete, data: { confirm: 'Are you sure?' }
+        .course-thumbnail
+          = image_tag "course-thumbnail.png"
+        .course-summary
+          .course-title
+            = course.name
+          .course-info
+            %span
+              Price:
+              = number_to_currency course.price
+            %span
+              Duration: 
+              = course.duration
+          .course-actions
+            = link_to 'Edit Details', edit_course_path(course)

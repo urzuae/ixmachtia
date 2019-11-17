@@ -1,0 +1,21 @@
+.btn-primary {
+  background: $green-light;
+  border-color: $green-dark;
+  color: $white;
+
+  &:active, &:hover {
+    background: $green-dark;
+    border-color: $green-dark;
+  }
+}
+
+.btn-secondary {
+  background: $brown-light;
+  border-color: $brown-dark;
+  color: $white;
+
+  &:active, &:hover {
+    background: $brown-dark;
+    border-color: $brown-dark;
+  }
+}

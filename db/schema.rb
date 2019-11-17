@@ -10,7 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_071402) do
+ActiveRecord::Schema.define(version: 2019_11_16_201354) do
+
+  create_table "chapters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "order", limit: 2
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_chapters_on_course_id"
+  end
+
+  create_table "content_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "file_types"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.integer "order", limit: 2
+    t.bigint "chapter_id"
+    t.bigint "content_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_contents_on_chapter_id"
+    t.index ["content_type_id"], name: "index_contents_on_content_type_id"
+  end
+
+  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "subtitle"
+    t.text "description"
+    t.decimal "price", precision: 8, scale: 2
+    t.decimal "duration", precision: 5, scale: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +67,8 @@ ActiveRecord::Schema.define(version: 2019_11_16_071402) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chapters", "courses"
+  add_foreign_key "contents", "chapters"
+  add_foreign_key "contents", "content_types"
+  add_foreign_key "courses", "users"
 end

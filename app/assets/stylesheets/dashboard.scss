@@ -1,0 +1,29 @@
+// Place all the styles related to the Dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+header {
+  min-height: 10vh;
+  padding: 10px;
+  color: $brown-dark;
+  a {
+    background: $white;
+    color: $brown-dark;
+  }
+}
+
+#nav {
+  background: $brown-light;
+  color: $white;
+  min-height: 100vh;
+  box-shadow: 2px 2px $green-dark;
+}
+
+#main {
+  background: $white;
+}
