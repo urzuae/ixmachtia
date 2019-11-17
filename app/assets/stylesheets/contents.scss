@@ -7,6 +7,7 @@
   border: 1px $brown-dark solid;
   overflow: hidden;
   box-shadow: 3px 3px 2px 2px $brown-light;
+  margin: 8px 0px;
 
   .cancel {
     display: inline-block;
@@ -26,21 +27,13 @@
     }
   }
 
-  .content-thumbnail {
-    width: 100%;
+  .content-summary {
+    background: $gray-light;
+    padding: 6px;
+
     img {
       width: 100%;
       display: block;
-    }
-  }
-
-  .content-summary {
-    background: $black;
-    padding: 6px;
-
-    .content-title {
-      color: $blue-bright;
-      font-weight: bold;
     }
 
     .content-info {
