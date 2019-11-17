@@ -14,4 +14,16 @@
       = f.text_area :description, class: "form-control"
   .row
     .actions.col-sm-6
-    = f.submit 'Save', class: "btn btn-primary"
+      = f.submit 'Save', class: "btn btn-primary"
+
+.row
+  - if @contents.length == 0
+    You have no content in your chapter yet!!
+    = link_to "Add your first piece of content!", new_content_path, class: "btn btn-primary"
+  - else
+    = link_to "Add Additional Content", new_content_path, class: "btn btn-primary"
+
+#contents.list-group
+  - unless @contents.length == 0
+    - @contents.each do |content|
+      = render 'contents/content_thumbnail', content: content

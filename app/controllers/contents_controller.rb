@@ -15,10 +15,12 @@ class ContentsController < ApplicationController
   # GET /contents/new
   def new
     @content = Content.new
+    @chapter = Chapter.find(params[:id])
   end
 
   # GET /contents/1/edit
   def edit
+    @chapter = @content.chapter
   end
 
   # POST /contents

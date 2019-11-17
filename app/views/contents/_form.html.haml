@@ -1,22 +1,16 @@
 = form_for @content do |f|
+  = f.hidden_field :chapter_id, value: @chapter.id
   - if @content.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@content.errors.count, "error")} prohibited this content from being saved:"
-      %ul
-        - @content.errors.full_messages.each do |message|
-          %li= message
+      %h4 There was an issue when trying to save this piece of content.
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :order
-    = f.text_field :order
-  .field
-    = f.label :chapter
-    = f.text_field :chapter
-  .field
-    = f.label :content_type
-    = f.text_field :content_type
-  .actions
-    = f.submit 'Save'
+  .row
+    .form-group.col-sm-6
+      = f.label :title
+      = f.text_field :title, class: "form-control"
+    .form-group.col-sm-6
+      = f.label :content_type, "Type"
+      = f.collection_select :content_type_id, ContentType.all, :id, :name, { :selected => f.object.content_type_id}, {class: "form-control"}
+  .row
+    .actions.col-sm-6
+      = f.submit 'Save', class: "btn btn-primary"
