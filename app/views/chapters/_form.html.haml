@@ -15,15 +15,22 @@
   .row
     .actions.col-sm-6
       = f.submit 'Save', class: "btn btn-primary"
+      = link_to 'Cancel', edit_course_path(@course), class: "btn btn-secondary"
 
-.row
-  - if @contents.length == 0
-    You have no content in your chapter yet!!
-    = link_to "Add your first piece of content!", new_content_path, class: "btn btn-primary"
-  - else
-    = link_to "Add Additional Content", new_content_path, class: "btn btn-primary"
+%hr
 
-#contents.list-group
-  - unless @contents.length == 0
-    - @contents.each do |content|
-      = render 'contents/content_thumbnail', content: content
+- unless @chapter.new_record?
+  .row
+    .col-sm-2
+      %h2 Contents
+    .col-sm-3.col-sm-offset-7{ style: "margin-top: 20px" }
+      - if @contents.length == 0
+        You have no content in your chapter yet!!
+        = link_to "Add your first piece of content!", new_content_path, class: "btn btn-primary"
+      - else
+        = link_to "+ Add Additional Content", new_content_path, class: "btn btn-primary"
+
+  #contents.list-group
+    - unless @contents.length == 0
+      - @contents.each do |content|
+        = render 'contents/content_thumbnail', content: content

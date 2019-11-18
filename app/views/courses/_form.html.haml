@@ -25,15 +25,22 @@
   .row
     .actions.col-sm-6
       = f.submit 'Save', class: "btn btn-primary"
+      = link_to 'Cancel', root_path, class: "btn btn-secondary"
 
-.row
-  - if @chapters.length == 0
-    You have no chapters yet!!
-    = link_to "Add your first Chapter!", new_chapter_path, class: "btn btn-primary"
-  - else
-    = link_to "Add Additional Chapter", new_chapter_path, class: "btn btn-primary"
+%hr
 
-#chapters.list-group
-  - unless @chapters.length == 0
-    - @chapters.each do |chapter|
-      = render 'chapters/chapter_thumbnail', chapter: chapter
+- unless @course.new_record?
+  .row
+    .col-sm-2
+      %h2 Chapters
+    .col-sm-3.col-sm-offset-7{ style: "margin-top: 20px"}
+      - if @chapters.length == 0
+        You have no chapters yet!!
+        = link_to "Add your first Chapter!", new_chapter_path, class: "btn btn-primary"
+      - else
+        = link_to "+ Add Additional Chapter", new_chapter_path, class: "btn btn-primary"
+
+  #chapters.list-group
+    - unless @chapters.length == 0
+      - @chapters.each do |chapter|
+        = render 'chapters/chapter_thumbnail', chapter: chapter

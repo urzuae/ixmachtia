@@ -3,12 +3,6 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
-  # GET /courses
-  # GET /courses.json
-  def index
-    @courses = Course.all
-  end
-
   # GET /courses/1
   # GET /courses/1.json
   def show

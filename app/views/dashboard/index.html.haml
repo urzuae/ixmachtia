@@ -1,12 +1,14 @@
-%h1 Dashboard
-
-%div
-  %p
+.wrapper
+  .col-sm-3
+    %h1 Dashboard
+  .col-sm-3.col-sm-offset-6{style: "margin-top: 25px"}
     - if @courses.length == 0
       You have no courses yet!!
       = link_to "Add your first Course!", new_course_path, class: "btn btn-primary"
     - else
-      = link_to "Create New Course", new_course_path, class: "btn btn-primary"
+      = link_to "+ Create New Course", new_course_path, class: "btn btn-primary"
+
+%hr
 
 - unless @courses.length == 0
   - @courses.each do |course|

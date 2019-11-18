@@ -1,7 +1,13 @@
+- types = "hidden"
+- text = "hidden"
 = form_for @content do |f|
-  - types = f.object.new_record? ? "hidden" : @content.content_type.name == "Text" ? "hidden" : ""
-  - text = f.object.new_record? ? "hidden" : @content.content_type.name == "Text" ? "" : "hidden"
-  = f.hidden_field :chapter_id, value: @chapter.id
+  - unless f.object.new_record?
+    = f.hidden_field :chapter_id, value: @chapter.id
+    
+    - is_text = @content.content_type.name == "Text"
+    - types = "" unless is_text
+    - text = "" if is_text
+
   - if @content.errors.any?
     #error_explanation
       %h4 There was an issue when trying to save this piece of content.
@@ -17,17 +23,22 @@
   .row.content-Text{class: text}
     .form-group.col-sm-6
       = f.text_area :text, class: "tinymce"
+    .col-sm-6
+      %p
+        %b Current Preview
+      = @content.text.html_safe
 
   .row.types{class: types}
     .form-group.col-sm-6
       = f.label :file
       = f.file_field :file
     .col-sm-6
-      - if @content.file.attached? && @content.content_type.name != "Text"
+      - if @content.file.attached? && !is_text
         = render "contents/attachment", file: @content.file, type: @content.content_type
 
   .row
     .actions.col-sm-6
       = f.submit 'Save', class: "btn btn-primary"
+      = link_to 'Cancel', edit_chapter_path(@chapter), class: "btn btn-secondary"
 
 = tinymce
