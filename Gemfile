@@ -32,8 +32,9 @@ gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 # Haml instead of erb
 gem "haml-rails"
 
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'tinymce-rails'
+gem 'mini_magick', '~> 4.8'
+gem 'image_processing', '~> 1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -2,14 +2,12 @@
   .content.row
     .cancel
       = link_to 'X', content, method: :delete, data: { confirm: 'Are you sure?' }
-    .content-summary.col-sm-1
-      = image_tag "icons/#{content.content_type.name}.png"
-    .content-title
-      = content.title
-    .content-info
-      %p
-        = content.content_type.name
     .content-actions
       = link_to 'Edit Details', edit_content_path(content)
-
-
+    .content-thumbnail.col-sm-1
+      = image_tag "icons/#{content.content_type.name}.png"
+    .content-summary
+      .content-title
+        = content.title
+      .content-info
+        = content.content_type.name

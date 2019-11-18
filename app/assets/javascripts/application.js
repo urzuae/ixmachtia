@@ -15,5 +15,6 @@
 //= require jquery-ui/widget
 //= require jquery-ui/sortable
 //= require activestorage
+//= require tinymce
 //= require turbolinks
 //= require_tree .

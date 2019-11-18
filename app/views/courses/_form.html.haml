@@ -26,13 +26,12 @@
     .actions.col-sm-6
       = f.submit 'Save', class: "btn btn-primary"
 
-%div
-  %p
-    - if @chapters.length == 0
-      You have no chapters yet!!
-      = link_to "Add your first Chapter!", new_chapter_path, class: "btn btn-primary"
-    - else
-      = link_to "Add Additional Chapter", new_chapter_path, class: "btn btn-primary"
+.row
+  - if @chapters.length == 0
+    You have no chapters yet!!
+    = link_to "Add your first Chapter!", new_chapter_path, class: "btn btn-primary"
+  - else
+    = link_to "Add Additional Chapter", new_chapter_path, class: "btn btn-primary"
 
 #chapters.list-group
   - unless @chapters.length == 0

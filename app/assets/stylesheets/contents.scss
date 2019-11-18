@@ -8,17 +8,18 @@
   overflow: hidden;
   box-shadow: 3px 3px 2px 2px $brown-light;
   margin: 8px 0px;
+  background: $white;
 
-  .cancel {
+  .cancel, .content-actions {
     display: inline-block;
-    position: absolute;
+    float: right;
     margin-bottom: -10px;
     z-index: 9;
-    right: 15px;
+    right: 0px;
 
     a {
       color: $brown-dark;
-      padding: 10px;
+      padding: 5px 10px;
       font-size: 14px;
       display: inline-block;
       &:hover {
@@ -27,26 +28,25 @@
     }
   }
 
-  .content-summary {
+  .content-thumbnail {
     background: $gray-light;
     padding: 6px;
+    display: inline-block;
 
     img {
       width: 100%;
-      display: block;
     }
+  }
 
+  .content-summary {
     .content-info {
-      color: $blue-bright;
-
-      span {
-
-      }
+      color: $blue-dark;
+      padding: 5px;
     }
 
     .content-actions {
       a {
-        color: $white;
+        color: $black;
       }
     }
   }

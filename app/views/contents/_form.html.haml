@@ -1,4 +1,6 @@
 = form_for @content do |f|
+  - types = f.object.new_record? ? "hidden" : @content.content_type.name == "Text" ? "hidden" : ""
+  - text = f.object.new_record? ? "hidden" : @content.content_type.name == "Text" ? "" : "hidden"
   = f.hidden_field :chapter_id, value: @chapter.id
   - if @content.errors.any?
     #error_explanation
@@ -10,7 +12,22 @@
       = f.text_field :title, class: "form-control"
     .form-group.col-sm-6
       = f.label :content_type, "Type"
-      = f.collection_select :content_type_id, ContentType.all, :id, :name, { :selected => f.object.content_type_id}, {class: "form-control"}
+      = f.collection_select :content_type_id, ContentType.all, :id, :name, { selected: f.object.content_type_id, prompt: "Select a type" }, {class: "form-control" }
+
+  .row.content-Text{class: text}
+    .form-group.col-sm-6
+      = f.text_area :text, class: "tinymce"
+
+  .row.types{class: types}
+    .form-group.col-sm-6
+      = f.label :file
+      = f.file_field :file
+    .col-sm-6
+      - if @content.file.attached? && @content.content_type.name != "Text"
+        = render "contents/attachment", file: @content.file, type: @content.content_type
+
   .row
     .actions.col-sm-6
       = f.submit 'Save', class: "btn btn-primary"
+
+= tinymce
