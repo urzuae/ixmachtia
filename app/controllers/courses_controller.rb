@@ -23,39 +23,22 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
 
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to root_path, notice: 'Course was successfully created.' and return if @course.save
+    render :new
   end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to root_path, notice: 'Course was successfully updated.' and return if @course.update(course_params)
+    render :edit
   end
 
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
     @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to root_path, notice: 'Course was successfully destroyed.'
   end
 
   private

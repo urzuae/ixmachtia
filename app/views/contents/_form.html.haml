@@ -1,9 +1,9 @@
 - types = "hidden"
 - text = "hidden"
 = form_for @content do |f|
+  = f.hidden_field :chapter_id, value: @chapter.id
+  
   - unless f.object.new_record?
-    = f.hidden_field :chapter_id, value: @chapter.id
-    
     - is_text = @content.content_type.name == "Text"
     - types = "" unless is_text
     - text = "" if is_text
@@ -23,10 +23,11 @@
   .row.content-Text{class: text}
     .form-group.col-sm-6
       = f.text_area :text, class: "tinymce"
-    .col-sm-6
-      %p
-        %b Current Preview
-      = @content.text.html_safe
+    - unless f.object.new_record?
+      .col-sm-6
+        %p
+          %b Current Preview
+        = @content.text.html_safe
 
   .row.types{class: types}
     .form-group.col-sm-6

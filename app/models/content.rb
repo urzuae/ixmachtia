@@ -12,7 +12,6 @@ class Content < ApplicationRecord
   end
 
   def set_content
-    puts self.content_type.name
     self.text = "" if self.content_type.name != "Text"
     self.file.purge if self.content_type.name == "Text"
   end

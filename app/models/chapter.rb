@@ -1,7 +1,7 @@
 class Chapter < ApplicationRecord
   belongs_to :course
 
-  has_many :contents
+  has_many :contents, dependent: :delete_all
 
   before_validation :set_up_order, on: :create
 

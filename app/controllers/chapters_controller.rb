@@ -28,30 +28,18 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
   def create
     @chapter = Chapter.new(chapter_params)
+      
+    redirect_to edit_chapter_path(@chapter), notice: 'Chapter was successfully created.' and return if @chapter.save
 
-    respond_to do |format|
-      if @chapter.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
-        format.json { render :show, status: :created, location: @chapter }
-      else
-        format.html { render :new }
-        format.json { render json: @chapter.errors, status: :unprocessable_entity }
-      end
-    end
+    render :new
   end
 
   # PATCH/PUT /chapters/1
   # PATCH/PUT /chapters/1.json
   def update
-    respond_to do |format|
-      if @chapter.update(chapter_params)
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
-        format.json { render :show, status: :ok, location: @chapter }
-      else
-        format.html { render :edit }
-        format.json { render json: @chapter.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to edit_course_path(@chapter.course), notice: 'Chapter was successfully updated.' and return if @chapter.update(chapter_params)
+
+    render :edit
   end
 
   # DELETE /chapters/1
