@@ -3,5 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  console.log('^^^^^');
-  $('#chapters').sortable();
+  $('#chapters').sortable({ revert: true });
+
+  $('.tabs').tabs();

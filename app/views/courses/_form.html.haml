@@ -1,46 +1,61 @@
-= form_for @course do |f|
-  = f.hidden_field :user_id, value: current_user.id
-  - if @course.errors.any?
-    #error_explanation
-      %h4 There was an issue when trying to save this course.
+.tabs
+  %ul
+    %li= link_to "Details", "#details"
+    %li= link_to "Chapters", "#chapts"
 
-  .row
-    .form-group.col-sm-6
-      = f.label :name
-      = f.text_field :name, class: "form-control"
-    .form-group.col-sm-6
-      = f.label :subtitle
-      = f.text_field :subtitle, class: "form-control"
-  .row
-    .form-group.col-sm-6
-      = f.label :description
-      = f.text_area :description, class: "form-control"
-    .form-group.col-sm-6
-      = f.label :price
-      = f.text_field :price, class: "form-control"
-  .row
-    .form-group.col-sm-6
-      = f.label :duration
-      = f.text_field :duration, class: "form-control"
-  .row
-    .actions.col-sm-6
-      = f.submit 'Save', class: "btn btn-primary"
-      = link_to 'Cancel', root_path, class: "btn btn-secondary"
+  %div{id: "details"}  
+    = form_for @course do |f|
+      = f.hidden_field :user_id, value: current_user.id
+      - if @course.errors.any?
+        #error_explanation
+          %h4 There was an issue when trying to save this course.
 
-%hr
+      .row
+        .form-group.col-sm-4.banner
+          Current Banner
+          = image_tag url_for(@course.thumbnail)
+      .row
+        .form-group.col-sm-6
+          = f.label :name
+          = f.text_field :name, class: "form-control"
+        .form-group.col-sm-6
+          = f.label :subtitle
+          = f.text_field :subtitle, class: "form-control"
+      .row
+        .form-group.col-sm-12
+          = f.label :description
+          = f.text_area :description, class: "form-control tinymce"
+      .row
+        .form-group.col-sm-6
+          = f.label :price
+          = f.text_field :price, class: "form-control"
+        .form-group.col-sm-6
+          = f.label :duration
+          = f.text_field :duration, class: "form-control"
+      .row
+        .form-group.col-sm-6
+          = f.label :thumbnail, "Banner"
+          = f.file_field :thumbnail, class: "form-control"
+      .row
+        .actions.col-sm-6
+          = f.submit 'Save', class: "btn btn-primary"
+          = link_to 'Back to Dashboard', root_path, class: "btn btn-secondary"
 
-- unless @course.new_record?
-  .row
-    .col-sm-2
-      %h2 Chapters
-    .col-sm-3.col-sm-offset-7{ style: "margin-top: 20px"}
-      - if @chapters.length == 0
-        You have no chapters yet!!
-        = link_to "Add your first Chapter!", new_chapter_path, class: "btn btn-primary"
-      - else
-        = link_to "+ Add Additional Chapter", new_chapter_path, class: "btn btn-primary"
+  %div{id: "chapts"}
+    - unless @course.new_record?
+      .row
+        .col-sm-2
+          %h2 Chapters
+        .col-sm-3.col-sm-offset-7{ style: "margin-top: 20px"}
+          - if @chapters.length == 0
+            You have no chapters yet!!
+            = link_to "Add your first Chapter!", new_chapter_path, class: "btn btn-primary"
+          - else
+            = link_to "+ Add Additional Chapter", new_chapter_path, class: "btn btn-primary"
 
-  #chapters.list-group
-    - unless @chapters.length == 0
-      - @chapters.each do |chapter|
-        = render 'chapters/chapter_thumbnail', chapter: chapter
+      #chapters.list-group
+        - unless @chapters.length == 0
+          - @chapters.each do |chapter|
+            = render 'chapters/chapter_thumbnail', chapter: chapter
+
+= tinymce

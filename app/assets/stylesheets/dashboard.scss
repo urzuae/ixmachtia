@@ -28,3 +28,37 @@ header {
 #main {
   background: $white;
 }
+
+.tabs {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      margin: 0 -2px;
+      display: inline-block;
+      background: $blue-bright;
+      padding: 10px;
+      border: 1px $black-dark solid;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:hover, &.ui-state-active {
+        background: $black-dark;
+        a {
+          color: $blue-bright;
+        }
+      }
+      a {
+        color: $black-dark;
+      }
+    }
+  }
+
+  > div {
+    border: 1px $black-dark solid;
+    padding: 10px 10px 30px 10px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+}

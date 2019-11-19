@@ -27,10 +27,11 @@ gem "dotenv-rails"
 # jquery
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+gem 'cropper-rails'
+gem 'tinymce-rails'
 # Haml instead of erb
 gem "haml-rails"
 
-gem 'tinymce-rails'
 gem 'mini_magick', '~> 4.8'
 gem 'image_processing', '~> 1.2'
 

@@ -3,7 +3,7 @@
     .cancel
       = link_to 'X', chapter, method: :delete, data: { confirm: 'Are you sure?' }
     .chapter-thumbnail
-      = image_tag "course-thumbnail.png"
+      = image_tag url_for(chapter.thumbnail)
     .chapter-summary
       .chapter-title
         = chapter.title

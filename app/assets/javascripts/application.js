@@ -12,8 +12,8 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require jquery-ui/widget
-//= require jquery-ui/sortable
+//= require jquery-ui
+//= require cropper
 //= require activestorage
 //= require tinymce
 //= require_tree .

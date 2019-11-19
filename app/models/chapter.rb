@@ -5,6 +5,10 @@ class Chapter < ApplicationRecord
 
   before_validation :set_up_order, on: :create
 
+  has_one_attached :thumbnail
+
+  scope :ordered, -> { order(order: :asc) }
+
   def set_up_order
     self.order = self.course.chapters.length + 1
   end

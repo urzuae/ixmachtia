@@ -6,18 +6,25 @@
       %h4 There was an issue when trying to save this chapter.
 
   .row
+    .form-group.col-sm-3.banner
+      Current Banner
+      = image_tag url_for(@chapter.thumbnail)
+  .row
     .form-group.col-sm-6
       = f.label :title
       = f.text_field :title, class: "form-control"
-    .form-group.col-sm-6
+  .row
+    .form-group.col-sm-12
       = f.label :description
-      = f.text_area :description, class: "form-control"
+      = f.text_area :description, class: "form-control tinymce"
+  .row
+    .form-group.col-sm-6
+      = f.label :thumbnail
+      = f.file_field :thumbnail, class: "form-control"
   .row
     .actions.col-sm-6
       = f.submit 'Save', class: "btn btn-primary"
-      = link_to 'Cancel', edit_course_path(@course), class: "btn btn-secondary"
-
-%hr
+      = link_to 'Back to Course', edit_course_path(@course), class: "btn btn-secondary"
 
 - unless @chapter.new_record?
   .row
@@ -34,3 +41,5 @@
     - unless @contents.length == 0
       - @contents.each do |content|
         = render 'contents/content_thumbnail', content: content
+
+= tinymce

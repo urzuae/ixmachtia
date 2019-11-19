@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @chapters = @course.chapters
+    @chapters = @course.chapters.ordered
   end
 
   # POST /courses
@@ -49,6 +49,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :subtitle, :description, :price, :duration, :user_id)
+      params.require(:course).permit(:name, :subtitle, :description, :price, :duration, :user_id, :thumbnail)
     end
 end

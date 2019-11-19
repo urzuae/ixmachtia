@@ -7,6 +7,8 @@ class Content < ApplicationRecord
 
   has_one_attached :file
 
+  scope :ordered, -> { order(order: :asc) }
+
   def set_up_order
     self.order = self.chapter.contents.length + 1
   end

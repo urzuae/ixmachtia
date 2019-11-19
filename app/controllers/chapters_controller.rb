@@ -21,7 +21,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/edit
   def edit
     @course = @chapter.course
-    @contents = @chapter.contents
+    @contents = @chapter.contents.ordered
   end
 
   # POST /chapters
@@ -46,10 +46,8 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1.json
   def destroy
     @chapter.destroy
-    respond_to do |format|
-      format.html { redirect_to chapters_url, notice: 'Chapter was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    redirect_to edit_course_path(@chapter.course), notice: 'Chapter was successfully destroyed.'  
   end
 
   private
@@ -60,6 +58,6 @@ class ChaptersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
-      params.require(:chapter).permit(:title, :description, :order, :course_id)
+      params.require(:chapter).permit(:title, :description, :order, :course_id, :thumbnail)
     end
 end
