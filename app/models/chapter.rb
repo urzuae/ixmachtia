@@ -3,11 +3,13 @@ class Chapter < ApplicationRecord
 
   has_many :contents, dependent: :delete_all
 
-  before_validation :set_up_order, on: :create
+  before_create :set_up_order
 
   has_one_attached :thumbnail
 
   scope :ordered, -> { order(order: :asc) }
+
+  validates_presence_of :title, :description, :course
 
   def set_up_order
     self.order = self.course.chapters.length + 1
