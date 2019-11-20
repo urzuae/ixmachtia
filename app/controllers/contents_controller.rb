@@ -1,6 +1,8 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :verify_authenticity_token, only: [:reorder]
+
   # GET /contents
   # GET /contents.json
   def index
@@ -48,6 +50,15 @@ class ContentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to contents_url, notice: 'Content was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def reorder
+    sorting = params[:sortable]
+    sorting.each.with_index do |id, idx|
+      chapter = Content.find_by(id: id)
+      chapter.order = idx + 1
+      chapter.save!
     end
   end
 

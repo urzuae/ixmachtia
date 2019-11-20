@@ -1,6 +1,8 @@
 class ChaptersController < ApplicationController
   before_action :set_chapter, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :verify_authenticity_token, only: [:reorder]
+
   # GET /chapters
   # GET /chapters.json
   def index
@@ -48,6 +50,18 @@ class ChaptersController < ApplicationController
     @chapter.destroy
 
     redirect_to edit_course_path(@chapter.course), notice: 'Chapter was successfully destroyed.'  
+  end
+
+  def reorder
+    sorting = params[:sortable]
+    puts sorting
+    sorting.each.with_index do |id, idx|
+      puts idx
+      chapter = Chapter.find_by(id: id)
+      chapter.order = idx + 1
+      puts chapter.inspect
+      chapter.save!
+    end
   end
 
   private

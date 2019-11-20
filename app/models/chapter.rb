@@ -2,10 +2,9 @@ class Chapter < ApplicationRecord
   belongs_to :course
 
   has_many :contents, dependent: :delete_all
+  has_one_attached :thumbnail
 
   before_create :set_up_order
-
-  has_one_attached :thumbnail
 
   scope :ordered, -> { order(order: :asc) }
 

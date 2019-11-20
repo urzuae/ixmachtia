@@ -3,6 +3,20 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $('#chapters').sortable({ revert: true });
-
-  $('.tabs').tabs();
+  $('#chapters').sortable
+    revert: true
+    update: (ui, event) ->
+      ids = []
+      $("#chapters .chapter-container").each ->
+        if(this.id != undefined && this.id != "")
+          ids.push(this.id)
+      $.ajax
+        type: 'POST'
+        url: '/chapters/reorder'
+        dataType: 'json'
+        contentType: 'application/json'
+        data: JSON.stringify({sortable: ids})
+      return
+  
+  $('.tabs').tabs()
+  return

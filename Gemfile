@@ -27,7 +27,7 @@ gem "dotenv-rails"
 # jquery
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
-gem 'cropper-rails'
+gem 'rails_sortable'
 gem 'tinymce-rails'
 # Haml instead of erb
 gem "haml-rails"
