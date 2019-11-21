@@ -10,8 +10,11 @@
 header {
   min-height: 10vh;
   padding: 10px;
-  color: $blue-bright;
+  color: $white;
   background: $black;
+  h2 {
+    margin-top: 5px;
+  }
   a {
     background: $white;
     color: $brown-dark;
@@ -22,7 +25,17 @@ header {
   background: $black-dark;
   color: $white;
   min-height: 100vh;
-  box-shadow: 2px 2px $green-dark;
+  padding-top: 10px;
+  a {
+    color: $white;
+    display: block;
+    padding: 2px;
+    &:hover {
+      box-shadow: 1px 1px 3px 1px $white;
+      border-radius: 3px;
+      text-decoration: none;
+    }
+  }
 }
 
 #main {
@@ -46,17 +59,17 @@ header {
       &:hover, &.ui-state-active {
         background: $black-dark;
         a {
-          color: $blue-bright;
+          color: $white;
         }
       }
       a {
-        color: $black-dark;
+        color: $white;
       }
     }
   }
 
   > div {
-    border: 1px $black-dark solid;
+    border: 1px #ccc solid;
     padding: 10px 10px 30px 10px;
     margin-bottom: 40px;
     overflow: hidden;

@@ -18,12 +18,23 @@
       right: 15px;
 
       a {
-        color: $brown-dark;
-        padding: 10px;
+        color: $orange-light;
+        padding: 5px;
         font-size: 14px;
+        margin: 2px;
+        text-shadow: 
+          3px 0 0 #fff,
+          -3px 0 0 #fff, 
+          0 3px 0 #fff,
+          0 -3px 0 #fff,
+          3px 3px #fff,
+          -3px -3px 0 #fff,
+          3px -3px 0 #fff,
+          -3px 3px 0 #fff;
         display: inline-block;
         &:hover {
-          corlor: $brown-light;
+          corlor: $orange-light;
+          text-decoration: none;
         }
       }
     }
@@ -37,7 +48,7 @@
     }
 
     .chapter-summary {
-      background: $black;
+      background: $black-dark;
       padding: 6px;
 
       .chapter-title {
@@ -47,15 +58,11 @@
 
       .chapter-info {
         color: $blue-bright;
-
-        span {
-
-        }
       }
 
       .chapter-actions {
         a {
-          color: $white;
+          color: $orange-light;
         }
       }
     }

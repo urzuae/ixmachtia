@@ -18,12 +18,12 @@
     right: 0px;
 
     a {
-      color: $brown-dark;
+      color: $orange-dark;
       padding: 5px 10px;
       font-size: 14px;
       display: inline-block;
       &:hover {
-        corlor: $brown-light;
+        corlor: $orange-light;
       }
     }
   }
@@ -39,15 +39,11 @@
   }
 
   .content-summary {
+    padding-left: 5px;
+    overflow: hidden;
     .content-info {
       color: $blue-dark;
       padding: 5px;
-    }
-
-    .content-actions {
-      a {
-        color: $black;
-      }
     }
   }
 }

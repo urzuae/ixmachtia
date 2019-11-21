@@ -8,6 +8,8 @@
       = image_tag "icons/#{content.content_type.name}.png"
     .content-summary
       .content-title
-        = content.title
+        %h5
+          %b= content.title
       .content-info
+        %b Type:
         = content.content_type.name

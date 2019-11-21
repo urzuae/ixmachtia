@@ -32,7 +32,7 @@
   .row.types{class: types}
     .form-group.col-sm-6
       = f.label :file
-      = f.file_field :file
+      = f.file_field :file, class: "btn btn-primary"
     .col-sm-6
       - if @content.file.attached? && !is_text
         = render "contents/attachment", file: @content.file, type: @content.content_type

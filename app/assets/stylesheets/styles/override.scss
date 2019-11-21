@@ -6,17 +6,25 @@
   &:active, &:hover {
     background: $blue-bright;
     border-color: $blue-light;
-    color: $black;
+    color: $white;
   }
 }
 
 .btn-secondary {
-  background: $brown-light;
-  border-color: $brown-dark;
+  background: $orange-light;
+  border-color: $orange-dark;
   color: $white;
 
   &:active, &:hover {
-    background: $brown-dark;
-    border-color: $brown-dark;
+    background: $orange-dark;
+    border-color: $orange-dark;
+  }
+}
+.row {
+  .row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
 }

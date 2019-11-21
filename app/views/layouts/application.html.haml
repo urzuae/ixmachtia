@@ -13,18 +13,17 @@
   %body
     %header
       .col-sm-9
-        Welcome to Course Builder
+        %h2 Welcome to Course Builder
       .col-sm-3.push-right
         - unless user_signed_in?
-          = link_to "Login", new_user_session_path, class: 'btn btn-secondary'
+          = link_to "Login", new_user_session_path, class: 'btn btn-primary'
         - else
           Hello
           = current_user.full_name
-          = link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-secondary'
 
     .wrapper
       .col-sm-2{ id: "nav" }
-        Sidebar
+        = render "dashboard/nav"
         
           
       .col-sm-10{ id: "main" }

@@ -14,28 +14,30 @@
         .form-group.col-sm-4.banner
           Current Banner
           = image_tag url_for(@course.thumbnail)
-      .row
-        .form-group.col-sm-6
+        .form-group.col-sm-7
           = f.label :name
           = f.text_field :name, class: "form-control"
-        .form-group.col-sm-6
+        .form-group.col-sm-7
           = f.label :subtitle
           = f.text_field :subtitle, class: "form-control"
-      .row
-        .form-group.col-sm-12
-          = f.label :description
-          = f.text_area :description, class: "form-control tinymce"
-      .row
-        .form-group.col-sm-6
+        .form-group.col-sm-7
           = f.label :price
-          = f.text_field :price, class: "form-control"
-        .form-group.col-sm-6
+          .input-group
+            .input-group-prepend
+              .input-group-text
+                $
+            = f.text_field :price, class: "form-control"
+        .form-group.col-sm-7
           = f.label :duration
           = f.text_field :duration, class: "form-control"
       .row
+        .form-group.col-sm-11
+          = f.label :description
+          = f.text_area :description, class: "form-control tinymce", rows: 15
+      .row
         .form-group.col-sm-6
           = f.label :thumbnail, "Banner"
-          = f.file_field :thumbnail, class: "form-control"
+          = f.file_field :thumbnail, class: "btn btn-primary"
       .row
         .actions.col-sm-6
           = f.submit 'Save', class: "btn btn-primary"
@@ -58,4 +60,6 @@
           - @chapters.each do |chapter|
             = render 'chapters/chapter_thumbnail', chapter: chapter
 
+    .row
+    %small *You can order elements by dragging and dropping them
 = tinymce

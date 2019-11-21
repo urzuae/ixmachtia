@@ -15,18 +15,17 @@
         .form-group.col-sm-3.banner
           Current Banner
           = image_tag url_for(@chapter.thumbnail)
-      .row
         .form-group.col-sm-6
           = f.label :title
           = f.text_field :title, class: "form-control"
       .row
         .form-group.col-sm-12
           = f.label :description
-          = f.text_area :description, class: "form-control tinymce"
+          = f.text_area :description, class: "form-control tinymce", rows: 15
       .row
         .form-group.col-sm-6
           = f.label :thumbnail
-          = f.file_field :thumbnail, class: "form-control"
+          = f.file_field :thumbnail, class: "btn btn-primary"
       .row
         .actions.col-sm-6
           = f.submit 'Save', class: "btn btn-primary"
@@ -49,4 +48,6 @@
           - @contents.each do |content|
             = render 'contents/content_thumbnail', content: content
 
+    .row
+    %small *You can order elements by dragging and dropping them
 = tinymce

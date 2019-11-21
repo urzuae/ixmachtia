@@ -14,46 +14,55 @@
     margin-bottom: -10px;
     z-index: 9;
     right: 15px;
-
     a {
-      color: $brown-dark;
-      padding: 10px;
+      color: $orange-light;
+      padding: 5px;
       font-size: 14px;
+      margin: 2px;
+      text-shadow: 
+        3px 0 0 #fff,
+        -3px 0 0 #fff, 
+        0 3px 0 #fff,
+        0 -3px 0 #fff,
+        3px 3px #fff,
+        -3px -3px 0 #fff,
+        3px -3px 0 #fff,
+        -3px 3px 0 #fff;
       display: inline-block;
       &:hover {
-        corlor: $brown-light;
+        corlor: $orange-light;
+        text-decoration: none
       }
     }
   }
 
   .course-thumbnail {
     width: 100%;
+    background: $black;
     img {
-      width: 100%;
+      max-width: 100%;
+      max-height: 160px;
       display: block;
+      margin: 0 auto;
     }
   }
 
   .course-summary {
-    background: $black;
+    background: $black-dark;
     padding: 6px;
 
     .course-title {
-      color: $blue-bright;
+      color: $white;
       font-weight: bold;
     }
 
     .course-info {
       color: $blue-bright;
-
-      span {
-
-      }
     }
 
     .course-actions {
       a {
-        color: $white;
+        color: $orange-light;
       }
     }
   }

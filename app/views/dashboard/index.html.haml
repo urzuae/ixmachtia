@@ -10,6 +10,7 @@
 
 %hr
 
-- unless @courses.length == 0
-  - @courses.each do |course|
-    = render 'courses/course_thumbnail', course: course
+.row.row-eq-height
+  - unless @courses.length == 0
+    - @courses.each do |course|
+      = render 'courses/course_thumbnail', course: course
