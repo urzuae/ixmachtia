@@ -35,6 +35,8 @@ gem "haml-rails"
 gem 'mini_magick', '~> 4.8'
 gem 'image_processing', '~> 1.2'
 
+gem 'activestorage-validator'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

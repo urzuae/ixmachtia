@@ -7,13 +7,14 @@
     = form_for @course do |f|
       = f.hidden_field :user_id, value: current_user.id
       - if @course.errors.any?
-        #error_explanation
+        #error_explanation{ style: "color: red"}
           %h4 There was an issue when trying to save this course.
 
       .row
         .form-group.col-sm-4.banner
           Current Banner
-          = image_tag url_for(@course.thumbnail)
+          = image_tag url_for(@course.thumbnail) unless @course.new_record?
+          = image_tag "course-thumbnail" if @course.new_record?
         .form-group.col-sm-7
           = f.label :name
           = f.text_field :name, class: "form-control"
@@ -48,9 +49,9 @@
       .row
         .col-sm-2
           %h2 Chapters
-        .col-sm-3.col-sm-offset-7{ style: "margin-top: 20px"}
+        .col-sm-6.text-center{ style: "margin-top: 20px"}
           - if @chapters.length == 0
-            You have no chapters yet!!
+            %h2 You have no chapters yet!!
             = link_to "Add your first Chapter!", new_chapter_path, class: "btn btn-primary"
           - else
             = link_to "+ Add Additional Chapter", new_chapter_path, class: "btn btn-primary"

@@ -30,9 +30,12 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
   def create
     @chapter = Chapter.new(chapter_params)
+    @course = @chapter.course
       
     redirect_to edit_chapter_path(@chapter), notice: 'Chapter was successfully created.' and return if @chapter.save
 
+    @chapter = Chapter.new
+    
     render :new
   end
 
@@ -54,12 +57,9 @@ class ChaptersController < ApplicationController
 
   def reorder
     sorting = params[:sortable]
-    puts sorting
     sorting.each.with_index do |id, idx|
-      puts idx
       chapter = Chapter.find_by(id: id)
       chapter.order = idx + 1
-      puts chapter.inspect
       chapter.save!
     end
   end

@@ -5,5 +5,7 @@ class Course < ApplicationRecord
 
   has_one_attached :thumbnail
 
-  validates_presence_of :name, :subtitle, :description, :price, :duration
+  validates_presence_of :name, :subtitle, :description, :price, :duration, :thumbnail
+
+  validates :thumbnail, presence: true, blob: { content_type: :image }
 end

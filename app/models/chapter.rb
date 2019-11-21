@@ -10,6 +10,8 @@ class Chapter < ApplicationRecord
 
   validates_presence_of :title, :description, :course
 
+  validates :thumbnail, presence: true, blob: { content_type: :image }
+
   def set_up_order
     self.order = self.course.chapters.length + 1
   end
