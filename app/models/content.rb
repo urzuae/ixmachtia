@@ -4,6 +4,7 @@ class Content < ApplicationRecord
 
   before_create :set_up_order
   before_save :set_content
+  validate :correct_file_mime_type
 
   has_one_attached :file
 
@@ -20,5 +21,13 @@ class Content < ApplicationRecord
   def set_content
     self.text = "" if self.content_type.name != "Text"
     self.file.purge if self.content_type.name == "Text"
+  end
+
+  private
+
+  def correct_file_mime_type
+    if self.file.attached? && !self.file.content_type.in?(self.content_type.file_types)
+      errors.add(:file, "Must be a valid type from the following listed #{self.content_type.file_types}")
+    end
   end
 end

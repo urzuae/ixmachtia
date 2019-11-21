@@ -3,7 +3,7 @@
     .cancel
       = link_to 'X', course, method: :delete, data: { confirm: 'Are you sure?' }
     .course-thumbnail
-      = image_tag url_for(course.thumbnail)
+      = image_tag url_for(course.thumbnail) if course.thumbnail.attached?
     .course-summary
       .course-title
         = course.name

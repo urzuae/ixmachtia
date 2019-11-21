@@ -8,13 +8,14 @@
       = f.hidden_field :course_id, value: @course.id
 
       - if @chapter.errors.any?
-        #error_explanation
+        #error_explanation{ style: "color: red"}
           %h4 There was an issue when trying to save this chapter.
 
       .row
         .form-group.col-sm-3.banner
           Current Banner
-          = image_tag url_for(@chapter.thumbnail)
+          = image_tag url_for(@chapter.thumbnail) unless @chapter.new_record?
+          = image_tag "course-thumbnail" if @chapter.new_record?
         .form-group.col-sm-6
           = f.label :title
           = f.text_field :title, class: "form-control"
@@ -36,9 +37,9 @@
       .row
         .col-sm-2
           %h2 Contents
-        .col-sm-3.col-sm-offset-7{ style: "margin-top: 20px" }
+        .col-sm-6.text-center{ style: "margin-top: 20px" }
           - if @contents.length == 0
-            You have no content in your chapter yet!!
+            %h3 You have no content in your chapter yet!!
             = link_to "Add your first piece of content!", new_content_path, class: "btn btn-primary"
           - else
             = link_to "+ Add Additional Content", new_content_path, class: "btn btn-primary"

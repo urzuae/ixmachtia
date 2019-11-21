@@ -29,8 +29,11 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
+    @chapter = @content.chapter
 
     redirect_to edit_chapter_path(@content.chapter), notice: 'Content was successfully created.' and return if @content.save
+
+    @content = Content.new
 
     render :new
   end
