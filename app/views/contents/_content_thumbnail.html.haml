@@ -1,0 +1,15 @@
+.content-container.col-sm-10.col-sm-offset-1{id: content.id}
+  .content.row
+    .cancel
+      = link_to 'X', content, method: :delete, data: { confirm: 'Are you sure?' }
+    .content-actions
+      = link_to 'Edit Details', edit_content_path(content)
+    .content-thumbnail.col-sm-1
+      = image_tag "icons/#{content.content_type.name}.png"
+    .content-summary
+      .content-title
+        %h5
+          %b= content.title
+      .content-info
+        %b Type:
+        = content.content_type.name

@@ -1,0 +1,14 @@
+%p
+  %b Current Attachment Preview
+- case file.blob.content_type
+- when "application/pdf"
+  %iframe{ src: url_for(@content.file) }
+- when /^image/
+  = image_tag url_for(@content.file), { "height": "100px", "width": "100px" }
+- when /^video/
+  = video_tag url_for(@content.file), { play: true, controls: true, "height": "200px", "width": "200px" }
+- when /^audio/
+  = audio_tag url_for(@content.file), { controls: true }
+- else
+  Downloadable
+  = link_to (image_tag "icons/File.png"), rails_blob_path(@content.file, disposition: "attachment")

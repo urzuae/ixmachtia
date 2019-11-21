@@ -1,0 +1,78 @@
+// Place all the styles related to the Courses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.course {
+  border-radius: 4px;
+  border: 1px $brown-dark solid;
+  overflow: hidden;
+  box-shadow: 3px 3px 2px 2px $brown-light;
+
+  .cancel {
+    display: inline-block;
+    position: absolute;
+    margin-bottom: -10px;
+    z-index: 9;
+    right: 15px;
+    a {
+      color: $orange-light;
+      padding: 5px;
+      font-size: 14px;
+      margin: 2px;
+      text-shadow: 
+        3px 0 0 #fff,
+        -3px 0 0 #fff, 
+        0 3px 0 #fff,
+        0 -3px 0 #fff,
+        3px 3px #fff,
+        -3px -3px 0 #fff,
+        3px -3px 0 #fff,
+        -3px 3px 0 #fff;
+      display: inline-block;
+      &:hover {
+        corlor: $orange-light;
+        text-decoration: none
+      }
+    }
+  }
+
+  .course-thumbnail {
+    width: 100%;
+    background: $black;
+    img {
+      max-width: 100%;
+      max-height: 160px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .course-summary {
+    background: $black-dark;
+    padding: 6px;
+
+    .course-title {
+      color: $white;
+      font-weight: bold;
+    }
+
+    .course-info {
+      color: $blue-bright;
+    }
+
+    .course-actions {
+      a {
+        color: $orange-light;
+      }
+    }
+  }
+}
+
+form {
+  .banner {
+    img {
+      width: 100%;
+      border: 3px $blue-bright inset;
+    }
+  }
+}

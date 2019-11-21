@@ -1,0 +1,6 @@
+mode: "exact"
+toolbar:
+  - cut copy paste pastetext pasteword | undo redo | forecolor backcolor | outdent indent blockquote
+  - fontselect fontsizeselect | bold italic underline strikethrough | justifyleft justifycenter justifyright justifyfull | sub sup | bullist numlist
+plugins:
+  - link

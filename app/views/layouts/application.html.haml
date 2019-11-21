@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title
+      Ixmachtia
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = tinymce_assets
+
+  %body
+    %header
+      .col-sm-9
+        %h2 Welcome to Course Builder
+      .col-sm-3.push-right
+        - unless user_signed_in?
+          = link_to "Login", new_user_session_path, class: 'btn btn-primary'
+        - else
+          Hello
+          = current_user.full_name
+
+    .wrapper
+      .col-sm-2{ id: "nav" }
+        = render "dashboard/nav"
+        
+          
+      .col-sm-10{ id: "main" }
+        = yield      

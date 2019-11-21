@@ -1,0 +1,12 @@
+.chapter-container.col-sm-3{ id: chapter.id }
+  .chapter
+    .cancel
+      = link_to 'X', chapter, method: :delete, data: { confirm: 'Are you sure?' }
+    .chapter-thumbnail
+      = image_tag url_for(chapter.thumbnail)
+    .chapter-summary
+      .chapter-title
+        = chapter.title
+      .chapter-info
+      .chapter-actions
+        = link_to 'Edit Details', edit_chapter_path(chapter)

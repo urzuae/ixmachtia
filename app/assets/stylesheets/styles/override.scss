@@ -1,0 +1,30 @@
+.btn-primary {
+  background: $blue-light;
+  border-color: $blue-dark;
+  color: $white;
+
+  &:active, &:hover {
+    background: $blue-bright;
+    border-color: $blue-light;
+    color: $white;
+  }
+}
+
+.btn-secondary {
+  background: $orange-light;
+  border-color: $orange-dark;
+  color: $white;
+
+  &:active, &:hover {
+    background: $orange-dark;
+    border-color: $orange-dark;
+  }
+}
+.row {
+  .row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}

@@ -1,0 +1,49 @@
+// Place all the styles related to the contents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content {
+  border-radius: 4px;
+  border: 1px $brown-dark solid;
+  overflow: hidden;
+  box-shadow: 3px 3px 2px 2px $brown-light;
+  margin: 8px 0px;
+  background: $white;
+
+  .cancel, .content-actions {
+    display: inline-block;
+    float: right;
+    margin-bottom: -10px;
+    z-index: 9;
+    right: 0px;
+
+    a {
+      color: $orange-dark;
+      padding: 5px 10px;
+      font-size: 14px;
+      display: inline-block;
+      &:hover {
+        corlor: $orange-light;
+      }
+    }
+  }
+
+  .content-thumbnail {
+    background: $gray-light;
+    padding: 6px;
+    display: inline-block;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .content-summary {
+    padding-left: 5px;
+    overflow: hidden;
+    .content-info {
+      color: $blue-dark;
+      padding: 5px;
+    }
+  }
+}

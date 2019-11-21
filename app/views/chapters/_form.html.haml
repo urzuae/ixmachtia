@@ -1,0 +1,53 @@
+.tabs
+  %ul
+    %li= link_to "Details", "#details"
+    %li= link_to "Contents", "#conts"
+
+  %div{id: "details"}
+    = form_for @chapter do |f|
+      = f.hidden_field :course_id, value: @course.id
+
+      - if @chapter.errors.any?
+        #error_explanation
+          %h4 There was an issue when trying to save this chapter.
+
+      .row
+        .form-group.col-sm-3.banner
+          Current Banner
+          = image_tag url_for(@chapter.thumbnail)
+        .form-group.col-sm-6
+          = f.label :title
+          = f.text_field :title, class: "form-control"
+      .row
+        .form-group.col-sm-12
+          = f.label :description
+          = f.text_area :description, class: "form-control tinymce", rows: 15
+      .row
+        .form-group.col-sm-6
+          = f.label :thumbnail
+          = f.file_field :thumbnail, class: "btn btn-primary"
+      .row
+        .actions.col-sm-6
+          = f.submit 'Save', class: "btn btn-primary"
+          = link_to 'Back to Course', edit_course_path(@course), class: "btn btn-secondary"
+
+  %div{id: "conts"}
+    - unless @chapter.new_record?
+      .row
+        .col-sm-2
+          %h2 Contents
+        .col-sm-3.col-sm-offset-7{ style: "margin-top: 20px" }
+          - if @contents.length == 0
+            You have no content in your chapter yet!!
+            = link_to "Add your first piece of content!", new_content_path, class: "btn btn-primary"
+          - else
+            = link_to "+ Add Additional Content", new_content_path, class: "btn btn-primary"
+
+      #contents.list-group
+        - unless @contents.length == 0
+          - @contents.each do |content|
+            = render 'contents/content_thumbnail', content: content
+
+    .row
+    %small *You can order elements by dragging and dropping them
+= tinymce

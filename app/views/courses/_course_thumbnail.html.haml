@@ -1,0 +1,18 @@
+.col-sm-3
+  .course
+    .cancel
+      = link_to 'X', course, method: :delete, data: { confirm: 'Are you sure?' }
+    .course-thumbnail
+      = image_tag url_for(course.thumbnail)
+    .course-summary
+      .course-title
+        = course.name
+      .course-info
+        %span
+          Price:
+          = number_to_currency course.price
+        %span
+          Duration: 
+          = course.duration
+      .course-actions
+        = link_to 'Edit Details', edit_course_path(course)
