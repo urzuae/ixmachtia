@@ -33,7 +33,7 @@ gem 'tinymce-rails'
 gem "haml-rails"
 
 gem 'mini_magick', '~> 4.8'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 gem 'activestorage-validator'
 
